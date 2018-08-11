@@ -12,5 +12,19 @@ Python script that allows you to automate the process of fetching information fr
 * You must provide the Request URL of your form as follows:
 
 ```python
-url = 'https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action'
+url = 'https://www.example.com/json.action'
+```
+
+* You must provide the desired filename title as follows:
+
+```python
+    filename = 'result-data.csv'
+```
+
+* Initialize your custom object with a dictionary:
+
+```python
+def __init__(self, dictionary):
+    self.name = dictionary['name']
+    self.paternal_lastname = dictionary['paternal_lastname']
 ```
