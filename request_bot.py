@@ -1,6 +1,6 @@
 import requests
 import csv
-
+import os
 
 url = 'https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action'
 headers = {'content-type': 'application/x-www-form-urlencoded'}
@@ -31,7 +31,7 @@ class RequestBot():
                 url,
                 data=form_data,
                 headers=headers,
-                timeout=2
+                timeout=5
                 )
 
             graduateArray = response.json()['items']
@@ -49,10 +49,11 @@ class RequestBot():
                             'universidad',
                             'graduacion fecha',
                             'cedula sep']
+
             writer_instance = csv.DictWriter(f, fieldnames=column_names)
             writer_instance.writeheader()
             for graduate in graduateArray:
-                writer_instance.writerow({
+                graduate_dictionary = {
                     'nombre': graduate['nombre'],
                     'paterno': graduate['paterno'],
                     'materno': graduate['materno'],
@@ -60,10 +61,13 @@ class RequestBot():
                     'universidad': graduate['desins'],
                     'graduacion fecha': graduate['anioreg'],
                     'cedula sep': graduate['idCedula']
-                })
+                }
+
+                writer_instance.writerow(graduate_dictionary)
                 self.print_graduate_array(graduate=graduate)
         print('\nexported document sucessfully')
-        print('with name: graduate_results.csv\n')
+        print('with name: graduate_results.csv')
+        print(f'in location: {os.getcwd()}\n')
 
     def print_graduate_array(self, graduate):
         name = graduate['nombre']
