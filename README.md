@@ -3,6 +3,6 @@ Python script that allows you to automate the process of fetching information fr
 
 ```
 In order to run this script you must:
-⋅⋅⋅ Have python 3.6 or higher
-⋅⋅⋅ Install the python module called 'requests'
+* Have python 3.6 or higher
+* Install the python module called 'requests'
 ```
