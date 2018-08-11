@@ -7,24 +7,10 @@ Python script that allows you to automate the process of fetching information fr
 * Have python 3.6 or higher.
 * Install the python module called 'requests' locally.
 
-## Custom Fetch Object Implementation:
+## Execution:
 
-* You must provide the Request URL of your form as follows:
+* execute start.py:
 
-```python
-url = 'https://www.example.com/json.action'
 ```
-
-* You must provide the desired filename title as follows:
-
-```python
-    filename = 'result-data.csv'
-```
-
-* Initialize your custom object with a dictionary:
-
-```python
-def __init__(self, dictionary):
-    self.name = dictionary['name']
-    self.paternal_lastname = dictionary['paternal_lastname']
+python3 start.py
 ```
