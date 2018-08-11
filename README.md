@@ -4,5 +4,13 @@ Python script that allows you to automate the process of fetching information fr
 
 ## Usage Requirements:
 
-* Have python 3.6 or higher
-* Install the python module called 'requests'
+* Have python 3.6 or higher.
+* Install the python module called 'requests' locally.
+
+## Custom Fetch Object Implementation:
+
+* You must provide the Request URL of your form as follows:
+
+```python
+url = 'https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action'
+```
