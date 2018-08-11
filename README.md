@@ -3,6 +3,8 @@ Python script that allows you to automate the process of fetching information fr
 
 ```
 Usage Requirements:
+
 1.- Have python 3.6 or higher
 2.- Install the python module called 'requests'
 ```
+* Unordered list can use asterisks
