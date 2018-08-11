@@ -9,8 +9,6 @@ Python script that allows you to automate the process of fetching information fr
 
 ## Execution:
 
-* execute start.py:
-
 ```
 python3 start.py
 ```
