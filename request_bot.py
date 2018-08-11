@@ -1,4 +1,6 @@
 import requests
+import csv
+
 
 url = 'https://www.cedulaprofesional.sep.gob.mx/cedula/buscaCedulaJson.action'
 headers = {'content-type': 'application/x-www-form-urlencoded'}
@@ -33,34 +35,59 @@ class RequestBot():
                 )
 
             graduateArray = response.json()['items']
-            self.print_graduate_array(graduateArray=graduateArray)
+            self.export_csv_document(graduateArray=graduateArray)
 
         except requests.exceptions.Timeout:
             print('\nServer Busy: Try Again in 3 minutes\n')
 
-    def print_graduate_array(self, graduateArray):
-        for graduate in graduateArray:
-            name = graduate['nombre']
-            paternal_lastname = graduate['paterno']
-            maternal_lastname = graduate['materno']
-            university_major = graduate['titulo']
-            university_name = graduate['desins']
-            graduation_year = graduate['anioreg']
-            graduation_code = graduate['idCedula']
+    def export_csv_document(self, graduateArray):
+        with open('graduate_results.csv', 'w', newline='') as f:
+            column_names = ['nombre',
+                            'paterno',
+                            'materno',
+                            'titulo',
+                            'universidad',
+                            'graduacion fecha',
+                            'cedula sep']
+            writer_instance = csv.DictWriter(f, fieldnames=column_names)
+            writer_instance.writeheader()
+            for graduate in graduateArray:
+                writer_instance.writerow({
+                    'nombre': graduate['nombre'],
+                    'paterno': graduate['paterno'],
+                    'materno': graduate['materno'],
+                    'titulo': graduate['titulo'],
+                    'universidad': graduate['desins'],
+                    'graduacion fecha': graduate['anioreg'],
+                    'cedula sep': graduate['idCedula']
+                })
+                self.print_graduate_array(graduate=graduate)
+        print('\nexported document sucessfully')
+        print('with name: graduate_results.csv\n')
 
-            print('\n')
-            print(f'Name: {name}')
-            print(f'Surname: {paternal_lastname} {maternal_lastname}')
-            print(f'University: {university_name}')
-            print(f'Major: {university_major}')
-            print(f'Graduation Year: {graduation_year}')
-            print(f'Graduation Code (SEP Cedula): {graduation_code}')
+    def print_graduate_array(self, graduate):
+        name = graduate['nombre']
+        paternal_lastname = graduate['paterno']
+        maternal_lastname = graduate['materno']
+        university_major = graduate['titulo']
+        university_name = graduate['desins']
+        graduation_year = graduate['anioreg']
+        graduation_code = graduate['idCedula']
+
+        print('\n')
+        print(f'Name: {name}')
+        print(f'Surname: {paternal_lastname} {maternal_lastname}')
+        print(f'University: {university_name}')
+        print(f'Major: {university_major}')
+        print(f'Graduation Year: {graduation_year}')
+        print(f'Graduation Code (SEP Cedula): {graduation_code}')
 
 
 def main():
     print("\n--------------------------------")
     print("Request Bot: Fetch Graduate Data")
     print("Coder: Adolfo Garza")
+    print("Last updated: August, 11, 2018")
     print("--------------------------------\n")
 
     name = input('Graduate Name: ')
