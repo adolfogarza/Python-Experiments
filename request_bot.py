@@ -36,7 +36,7 @@ class RequestBot():
             self.print_graduate_array(graduateArray=graduateArray)
 
         except requests.exceptions.Timeout:
-            print('\nRequest limit reached: Try again in 3 minutes.')
+            print('\nServer Busy: Try Again in 3 minutes\n')
 
     def print_graduate_array(self, graduateArray):
         for graduate in graduateArray:
