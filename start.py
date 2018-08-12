@@ -5,7 +5,6 @@
     Date last modified: 08/11/2018
     Python Version: 3.6
 '''
-from request_bot import RequestBot
 from graduate import Graduate
 
 
@@ -16,7 +15,7 @@ def main():
     print("Last updated: August, 11, 2018")
     print("--------------------------------\n")
 
-    Graduate.launch_sequence(request_mechanism=RequestBot)
+    Graduate().launch_sequence()
 
 
 if __name__ == "__main__":
