@@ -4,6 +4,9 @@
     Date created: 08/11/2018
     Date last modified: 08/11/2018
     Python Version: 3.6
+
+    Description: Subclass that overrides traits where needed to consume web
+    form sucessfully without having to deal with boilerplate code.
 '''
 from requestable import Requestable
 

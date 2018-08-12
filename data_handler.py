@@ -4,6 +4,10 @@
     Date created: 08/11/2018
     Date last modified: 08/11/2018
     Python Version: 3.6
+
+    Description: Responsible for handling the fetching of the data as well
+    as the processing to a comma separated file document, it is capable of
+    processing any requestable object.
 '''
 
 import requests

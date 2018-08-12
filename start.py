@@ -4,6 +4,9 @@
     Date created: 08/11/2018
     Date last modified: 08/11/2018
     Python Version: 3.6
+
+    Description: Entry point of the script, presents title and launches main
+    requestable launch sequence.
 '''
 from graduate import Graduate
 

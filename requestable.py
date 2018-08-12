@@ -4,6 +4,10 @@
     Date created: 08/11/2018
     Date last modified: 08/11/2018
     Python Version: 3.6
+
+    Description: Superclass that contains all the expected traits of a
+    pontentially requestable type. Any subclass has the potential to override
+    any behaviour to best fit the response needs.
 '''
 
 from data_handler import DataHandler
