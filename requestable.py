@@ -40,7 +40,6 @@ class Requestable():
         fieldnames = []
         for key, value in response_array[0].items():
             fieldnames.append(key)
-        print(fieldnames)
         return fieldnames
 
     def print_dictionary(self, dictionary):
